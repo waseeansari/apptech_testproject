@@ -90,6 +90,9 @@
 </div> <!-- container / end -->
 
 <style type="text/css">
+.error{
+    color:red;
+}
 .notes-card {
     position: relative;
     display: -ms-flexbox;
@@ -163,7 +166,7 @@
                         maxlength: 500
                     },
                     image: {
-                        required: true,
+                        extension: "jpg|jpeg|png"
                     },
                 },
                 messages: {
@@ -172,7 +175,6 @@
                         maxlength: "Name should less than or equal to 500 characters."
                     },
                     image: {
-                        required: "Please select price",
                     }
                 },
                 errorElement : 'div',
@@ -198,9 +200,6 @@
                             $('#saveNoteForm').trigger("reset");
                             //$('#noteModal').modal('hide');
                             window.location.reload();
-                            setTimeout(function(){
-                                app_response_messages.find('.alert').addClass('d-none');
-                            },3000);
                         },
                         error :function( data ) {
                             if (data.status === 422) {
